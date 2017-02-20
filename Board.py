@@ -29,4 +29,4 @@ class Board:
 			
 			print(line)
 			
-		print(figure.attacked_cells)
+		print(figure.attacked_cells) 
