@@ -1,4 +1,4 @@
-from figures import Bishop, King, Knight, Queen, Rook 
+from Figures import Bishop, King, Knight, Queen, Rook 
 
 class FigureManager():
 	board = None
@@ -6,7 +6,7 @@ class FigureManager():
 	def __init__(self, _board):
 		self.board = _board;
 	
-	def make(self, code, position = 0):
+	def make(self, code, position = -1):
 		figure = None
 		
 		if(code == "B"):
@@ -18,8 +18,9 @@ class FigureManager():
 		elif(code == "Q"):
 			figure = Queen(self.board)
 		else: 
-			return Rook(self.board)
+			figure = Rook(self.board)
 			
-		figure.put_on_board(position)
+		if(position >= 0):
+			figure.put_on_board(position)
 		
 		return figure
