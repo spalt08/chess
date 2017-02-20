@@ -21,6 +21,6 @@ class FigureManager():
 			figure = Rook(self.board)
 			
 		if(position >= 0):
-			figure.put_on_board(position)
+			figure.calculate(position)
 		
 		return figure

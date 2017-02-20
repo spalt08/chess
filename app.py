@@ -12,15 +12,22 @@ parser.add_argument("-b", "--bishops", type=int, default=0, help="Bishops count"
 parser.add_argument("-r", "--rooks", type=int, default=0, help="Rookes count")
 args = parser.parse_args()
 
+args_input = []
+args_input += ["Q"] * args.queens
+args_input += ["R"] * args.rooks
+args_input += ["B"] * args.bishops
+args_input += ["N"] * args.knights
+args_input += ["K"] * args.kings
+
 # Main
 board = Board();
 pieces_catalog = FigureManager(board)
-
 pieces_input = []
-for i in range(0, 8):
-	pieces_input.append(pieces_catalog.make("Q"));
+
+for letter in args_input:
+	pieces_input.append(pieces_catalog.make(letter));
 	
-# make
+# Start Calculation
 handle = BoardCombinator(board)
 handle.pieces = pieces_input
 handle.start()
