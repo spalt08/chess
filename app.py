@@ -1,6 +1,7 @@
 import argparse
 from Board import Board
 from Figures import FigureManager
+from BoardCombinator import BoardCombinator
 
 # CMD input
 parser = argparse.ArgumentParser()
@@ -13,14 +14,16 @@ args = parser.parse_args()
 
 # Main
 board = Board();
-pieces = FigureManager(board)
+pieces_catalog = FigureManager(board)
 
-fig = pieces.make("N", -1);
-
-if(board.try_to_place(fig)):
-	board.place_figure(fig)
-	print(board.cells_booked)
-	print(board.figures_placed)
+pieces_input = []
+for i in range(0, 8):
+	pieces_input.append(pieces_catalog.make("Q"));
+	
+# make
+handle = BoardCombinator(board)
+handle.pieces = pieces_input
+handle.start()
 
 # debug stuff 
 
