@@ -6,7 +6,7 @@ class Figure():
 	def __init__(self, _board):
 		self.board = _board;
 		
-	def put_on_board(self, _position):
+	def calculate(self, _position):
 		self.position = _position
 		self.get_attacked_cells()
 		

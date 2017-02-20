@@ -15,6 +15,13 @@ args = parser.parse_args()
 board = Board();
 pieces = FigureManager(board)
 
+fig = pieces.make("N", -1);
+
+if(board.try_to_place(fig)):
+	board.place_figure(fig)
+	print(board.cells_booked)
+	print(board.figures_placed)
+
 # debug stuff 
 
 # fig = pieces.make("N", 35);
