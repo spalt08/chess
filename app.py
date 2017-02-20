@@ -16,7 +16,7 @@ board = Board();
 pieces = FigureManager(board)
 
 fig = pieces.make("Q", 35);
-
+ 
 board.draw_figure(fig) 
 
 # tests = [0, 1, 5, 8, 9, 15, 16, 18]
