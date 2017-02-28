@@ -27,7 +27,7 @@
 
 # Запуск скрипта
 ```
-python app.py -i 8
+python app.py -i input.txt -o output.txt
 ```
 Параметры
 ```
