@@ -40,3 +40,8 @@ optional arguments:
   -o OUTPUT, --output OUTPUT
                         Output filename
 ```
+
+# Тесты
+```
+python3 tests.py
+```
