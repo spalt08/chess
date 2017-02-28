@@ -6,6 +6,7 @@ class Board:
 	cells_booked = None
 	cells_placed = None
 	figures_placed = None
+	letters = ["a", "b", "c", "d", "e", "f", "g", "h"]
 	
 	def __init__(self, _n = 8):
 		self.n = _n
@@ -30,7 +31,17 @@ class Board:
 		y = int(position / self.n);
 		x = position - self.n * y;
 		return y, x;
+	
+	def encode_figures(self):
+		output = ""
 		
+		for figure in self.figures_placed:
+			(y, x) = self.decode_position(figure.position)
+			
+			output += figure.code + self.letters[x] + str(8 - y) + " "
+			
+		return output
+			
 	def render_figure(self, figure):
 		for x in range(0, self.n):
 			line = ""
@@ -51,8 +62,9 @@ class Board:
 			
 		print(figure.attacked_cells) 
 			
-	def render(self):
+	def render(self, is_string = False):
 		flist = {}
+		lines = []
 		
 		for figure in self.figures_placed:
 			flist[figure.position] = figure.code
@@ -66,6 +78,11 @@ class Board:
 					line += flist[pos] + " "
 				else:
 					line += "_ "
+					
+			lines.append(line)
 			
-			print(line)
+		if(is_string):
+			return "\n".join(lines)
+		else:
+			print("\n".join(lines))
 			
