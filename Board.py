@@ -33,14 +33,15 @@ class Board:
 		return y, x;
 	
 	def encode_figures(self):
-		output = ""
+		output = []
 		
 		for figure in self.figures_placed:
 			(y, x) = self.decode_position(figure.position)
 			
-			output += figure.code + self.letters[x] + str(8 - y) + " "
+			output.append( figure.code + self.letters[x] + str(8 - y) )
 			
-		return output
+		output.sort()
+		return " ".join(output)
 			
 	def render_figure(self, figure):
 		for x in range(0, self.n):

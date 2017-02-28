@@ -11,7 +11,7 @@ args = parser.parse_args()
 args_input = []
 
 # File Input
-file = open(args.input, 'r')
+file = open((args.input if args.input else 'input.txt'), 'r')
 mode = file.readline()
 
 for line in file:
@@ -37,12 +37,12 @@ if(handle.has_results):
 	str_figures = handle.board.encode_figures() 
 	str_placement = handle.board.render(True) 
 	
-	with open(args.output, "w") as context:
+	with open((args.output if args.output else 'output.txt'), "w") as context:
 		context.write(str_figures)
 		context.write("\n")
 		context.write("\n")
 		context.write(str_placement)
 else:
-	with open(args.output, "w") as context:
+	with open((args.output if args.output else 'output.txt'), "w") as context:
 		context.write("No any corrent placement")
         
